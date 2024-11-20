@@ -83,17 +83,15 @@ class Child1 extends Component {
 
     svg.append("g").call(d3.axisLeft(y));
 
-    // x-axis with proper alignment
     const xAxis = svg
       .append("g")
       .attr("transform", `translate(0,${height})`)
-      .call(d3.axisBottom(x).ticks(d3.timeDay.every(1))); // Ensure the ticks match the data points
+      .call(d3.axisBottom(x).ticks(d3.timeDay.every(1))); // makes sure the ticks match the data points
 
-    // Rotate and position the x-axis labels after the ticks are drawn
     xAxis
       .selectAll("text")
       .style("text-anchor", "middle")
-      .attr("transform", "rotate(45)")
+      .attr("transform", "rotate(45)") //rotates text
       .style("font-size", "10px")
       .attr("dy", "1px")
       .attr("dx", "50px");
@@ -112,7 +110,7 @@ class Child1 extends Component {
       .attr("class", "line-close")
       .attr("d", lineClose);
 
-    // Append circles for Open line
+    // puts circles on open line
     svg
       .selectAll("circle.open")
       .data(filteredData)
@@ -139,7 +137,7 @@ class Child1 extends Component {
         d3.select(".tooltip").style("visibility", "hidden");
       });
 
-    // Append circles for Close line
+    // puts circles on close line
     svg
       .selectAll("circle.close")
       .data(filteredData)
@@ -203,11 +201,11 @@ class Child1 extends Component {
           </div>
         </div>
         
-        {/* Flexbox container for chart and legend */}
+        
         <div className="chart-legend-container">
           <div ref={this.chartRef}></div>
           
-          {/* Legend content */}
+          
           <div className="legend">
             <div className="legend-item">
               <div className="legend-open"></div>
